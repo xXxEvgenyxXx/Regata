@@ -1,0 +1,1235 @@
+/* Сброс стилей и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* Навигация */
+.navbar {
+    position: sticky;
+    top: 16px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #03BFF3;
+    backdrop-filter: blur(250px);
+    border-radius: 20px;
+    margin: 0 62px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    gap: 84px;
+}
+
+.nav-logo .logo-text {
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+    background: #03BFF3;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 84px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #05A3D6;
+}
+
+.nav-hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-hamburger svg {
+    width: 34px;
+    height: 34px;
+}
+
+.nav-phone {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 5px;
+    width: fit-content;
+    height: 35px;
+    background: #F5F5F5;
+    border-radius: 30px;
+}
+
+.phone-icon {
+    width: 14px;
+    height: 20px;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.phone-number {
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    text-wrap: nowrap;
+}
+
+/* Hero секция */
+.hero {
+    position: relative;
+    height: 675px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #03BFF3 0%, #05A3D6 100%), url('images/hero-bg.png') center center/cover no-repeat;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Автоматически распределяет содержимое слева и справа */
+    gap: auto;
+    padding: 1vh 4vw;
+    background: #03BFF3;
+    border: 15px solid #FFFFFF;
+    border-radius: 50px;
+    text-align: center;
+    max-width: 1440px;
+    width: 100%;
+    position: relative;
+    top: 100px;
+}
+
+.hero-title {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.22;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.hero-button {
+    background: #F5F5F5;
+    border: none;
+    padding:  10px 20px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 1em;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-wrap: nowrap;
+}
+
+.hero-button:hover {
+    background: #E5E5E5;
+    transform: translateY(-2px);
+}
+
+/* О компании */
+.about {
+    padding: 50px 0;
+    background: #FFFFFF;
+}
+
+.about-image {
+    flex: 1;
+    width: 50%;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    max-width: 1436px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    gap: 24px;
+    min-height: 600px;
+    transition: all 0.3s ease;
+    align-items: stretch;
+}
+
+.about-text {
+    flex: 1;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #05A3D6;
+    margin-bottom: 20px;
+}
+
+.about-subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    color: #3FC0EB;
+    line-height: 1.22;
+    margin-bottom: 15px;
+}
+
+.about-description {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.about-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+}
+
+.about-card {
+    background: #FFFFFF;
+    border-radius: 25.83px;
+    padding: 42px 20px;
+    box-shadow: 0px 5.17px 10.33px rgba(1, 57, 73, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-icon {
+    width: 20px;
+    height: 20px;
+    color: #000000;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+    flex: 1;
+}
+
+.card-content p {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+/* Команда */
+.team {
+    padding: 32px 0;
+    background: #FFFFFF;
+}
+
+.team-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.team-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #05A3D6;
+    margin-bottom: 16px;
+}
+
+.team-subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    color: #03BFF3;
+    line-height: 1.22;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-between;
+    gap: 56px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: #FFFFFF;
+    border-radius: 17.56px;
+    padding: 10px;
+    box-shadow: 0px 3.51px 7.02px rgba(1, 57, 73, 0.25);
+    width: 306px;
+    height: 535px;
+    display: flex;
+    flex-direction: column;
+    gap: 6.8px;
+}
+
+.member-photo {
+    width: 100%;
+    height: 412px;
+    border-radius: 19px;
+    object-fit: cover;
+    object-position: center;
+    background-color: #E5E5E5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.member-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(1, 57, 73, 0.3);
+}
+
+/* Fallback для изображений, которые не загрузились */
+.member-photo:not([src]), 
+.member-photo[src=""],
+.member-photo[src*="data:image/svg+xml"] {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306 412"><rect width="306" height="412" fill="%23E5E5E5"/><text x="153" y="206" text-anchor="middle" fill="%23999" font-size="16">Фото</text></svg>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.member-name {
+    font-weight: 700;
+    font-size: 16.32px;
+    color: #000000;
+}
+
+.member-role {
+    font-weight: 700;
+    font-size: 10.88px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.member-roles {
+    display: flex;
+    gap: 8px;
+}
+
+.member-experience {
+    font-weight: 500;
+    font-size: 10.88px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: auto;
+}
+
+/* Контакты */
+.contact {
+    background: #03BFF3;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-background {
+    position: relative;
+    padding: 20px 371px;
+}
+
+.contact-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 128px;
+    background: linear-gradient(135deg, rgba(3, 191, 243, 0.5) 0%, rgba(5, 163, 214, 0.5) 100%);
+    z-index: 1;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    min-height: 901px;
+}
+
+.contact-header {
+    text-align: center;
+    max-width: 697px;
+}
+
+.contact-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.contact-subtitle {
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 1.22;
+    max-width: 497px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 530px;
+    width: 100%;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.form-input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.form-privacy {
+    font-size: 10px;
+    color: #FFFFFF;
+    text-align: center;
+    max-width: 400px;
+}
+
+.form-button {
+    background: #F5F5F5;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    background: #E5E5E5;
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-info-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7.43px;
+    background: #F5F5F5;
+    padding: 15px 24px;
+    border-radius: 44.57px;
+    min-width: 292.66px;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    color: #000000;
+}
+
+.contact-text {
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 39px;
+    margin-top: auto;
+}
+
+.copyright,
+.privacy-link {
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+
+    
+    .about-content {
+        flex-direction: column;
+        gap: 40px;
+        min-height: 800px;
+        align-items: center;
+    }
+    
+    .about-image {
+        max-width: 100%;
+        order: -1;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .about-image img {
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .about-text {
+        text-align: center;
+        max-width: 600px;
+        margin-bottom: 40px;
+    }
+    
+    .about-cards {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .card-content li {
+        font-size: 16px;
+        margin-left: 20px;
+        padding-left: 15px;
+    }
+
+    .team-members {
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .member-photo {
+        height: 380px;
+    }
+
+    .contact-background {
+        padding: 20px 50px;
+    }
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(250px);
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .nav-menu.nav-menu-active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .nav-hamburger {
+        display: flex;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1002;
+    }
+    .nav-link {
+        text-decoration: none;
+        color: #03BFF3;
+        transition: color 0.3s ease;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        margin: 16px 20px;
+    }
+
+    .nav-content {
+        flex-direction: row;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(250px);
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .nav-menu.nav-menu-active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .nav-hamburger {
+        z-index: 1002;
+    }
+
+    .hero-content {
+        padding: 80px 30px 100px 30px;
+        margin: 0 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 5vh;
+    }
+
+    .hero-title {
+        font-size: 36px;
+        text-align: left;
+    }
+
+    .about-content {
+        padding: 0 20px;
+        min-height: 700px;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .about-image {
+        max-width: 100%;
+        order: -1;
+        width: 100%;
+        max-width: 450px;
+    }
+    
+    .about-image img {
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .about-text {
+        text-align: center;
+        max-width: 500px;
+        margin-bottom: 30px;
+    }
+    
+    .about-cards {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .card-content li {
+        font-size: 15px;
+        margin-left: 18px;
+        padding-left: 14px;
+    }
+
+    .team-content {
+        padding: 0 20px;
+    }
+
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .member-photo {
+        height: 350px;
+    }
+
+    .contact-background {
+        padding: 20px;
+    }
+
+    .contact-content {
+        gap: 20px;
+    }
+
+    .contact-item {
+        min-width: auto;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .contact-footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .nav-link {
+        text-decoration: none;
+        color: #03BFF3;
+        transition: color 0.3s ease;
+    }
+    
+    .nav-menu.nav-menu-active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Мобильная версия согласно дизайну Figma */
+@media (max-width: 480px) {
+
+    /* Общие изменения для мобильных */
+    body {
+        font-size: 14px;
+    }
+
+    /* Навигация */
+    .navbar {
+        margin: 16px;
+        border-radius: 20px;
+    }
+
+    .nav-content {
+        padding: 16px 22px;
+        gap: 0;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 12px;
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .nav-menu {
+        display: none;
+        /* Скрываем меню на мобильных */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(250px);
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-menu.nav-menu-active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .nav-hamburger {
+        display: block;
+        /* Показываем гамбургер-меню */
+        z-index: 1002;
+    }
+
+
+    .nav-phone {
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .phone-icon {
+        width: 14px;
+        height: 20px;
+    }
+
+    .phone-number {
+        display: none;
+    }
+
+    /* Hero секция */
+    .hero {
+        height: 80vh;
+        margin-top: 60px;
+        width: 100%;
+        max-width: 393px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 30px;
+        min-height: 400px;
+    }
+
+    .hero-content {
+        padding: 20px 60px 50px 60px;
+        margin: 0;
+        border-radius: 50px;
+        border-width: 15px;
+        gap: 20px;
+        width: 100%;
+        max-width: 393px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 24px;
+        text-align: left;
+    }
+
+    .hero-button {
+        font-size: 12px;
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+
+    /* О компании */
+    .about {
+        padding: 50px 20px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 24px;
+        padding: 0;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+        min-height: 900px;
+        align-items: center;
+    }
+    
+    .about-image {
+        max-width: 100%;
+        order: -1;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 20px;
+    }
+    
+    .about-image img {
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .about-description {
+        font-size: 14px;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .about-text {
+        padding: 0;
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .about-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .about-subtitle {
+        font-size: 20px;
+        line-height: 1.22;
+    }
+
+    .about-cards {
+        gap: 24px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .about-card {
+        padding: 42px 20px;
+        border-radius: 25.83px;
+        box-shadow: 0px 5.17px 10.33px rgba(1, 57, 73, 0.25);
+    }
+
+    .card-header {
+        gap: 5px;
+    }
+
+    .card-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-content p {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    .card-content li {
+        font-size: 14px;
+        margin-left: 15px;
+        padding-left: 12px;
+    }
+
+    .card-content ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .card-content li {
+        font-size: 16px;
+        margin-left: 20px;
+        position: relative;
+        padding-left: 15px;
+    }
+    
+    .card-content li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #05A3D6;
+        font-weight: bold;
+    }
+
+    /* Команда */
+    .team {
+        padding: 30px 20px;
+    }
+
+    .team-content {
+        padding: 0;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .team-header {
+        margin-bottom: 30px;
+        padding: 0 8px;
+    }
+
+    .team-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .team-subtitle {
+        font-size: 20px;
+        line-height: 1.22;
+    }
+
+    .team-members {
+        flex-direction: column;
+        gap: 56px;
+        padding: 0 50px;
+    }
+
+    .team-member {
+        width: 306px;
+        height: 535px;
+        border-radius: 17.56px;
+        padding: 10px;
+        box-shadow: 0px 3.51px 7.02px rgba(1, 57, 73, 0.25);
+    }
+    
+    .member-photo {
+        height: 412px;
+    }
+
+    .member-photo {
+        height: 412px;
+        border-radius: 19px;
+    }
+
+    .member-name {
+        font-size: 16.32px;
+    }
+
+    .member-role {
+        font-size: 10.88px;
+    }
+
+    .member-roles {
+        gap: 8px;
+    }
+
+    .member-experience {
+        font-size: 10.88px;
+    }
+
+    /* Контакты */
+    .contact {
+        padding: 0;
+    }
+
+    .contact-background {
+        padding: 8px 6px;
+    }
+
+    .contact-background::before {
+        height: 128px;
+    }
+
+    .contact-content {
+        gap: 34px;
+        min-height: 901px;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .contact-header {
+        padding: 0 6px;
+        max-width: 380px;
+    }
+
+    .contact-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .contact-subtitle {
+        font-size: 20px;
+        line-height: 1.22;
+        max-width: 100%;
+    }
+
+    .contact-form {
+        max-width: 368px;
+        gap: 20px;
+    }
+
+    .form-field {
+        width: 100%;
+    }
+
+    .form-input {
+        padding: 9.72px;
+        border-radius: 13.89px;
+        font-size: 11.11px;
+    }
+
+    .form-privacy {
+        font-size: 6.94px;
+        max-width: 277.74px;
+        margin: 0 auto;
+    }
+
+    .form-button {
+        font-size: 16.66px;
+        padding: 13.89px 27.77px;
+        border-radius: 41.66px;
+        width: 147.89px;
+        height: 47.91px;
+    }
+
+    .contact-info {
+        gap: 20px;
+    }
+
+    .contact-info-title {
+        font-size: 32px;
+    }
+
+    .contact-item {
+        min-width: auto;
+        width: 100%;
+        max-width: 294px;
+        padding: 11.61px 18.57px;
+        border-radius: 34.48px;
+    }
+
+    .contact-icon {
+        width: 18.57px;
+        height: 18.57px;
+    }
+
+    .contact-text {
+        font-size: 18.57px;
+    }
+
+    .contact-footer {
+        flex-direction: column;
+        gap: 39px;
+        padding: 0 11px;
+        text-align: center;
+    }
+
+    .copyright,
+    .privacy-link {
+        font-size: 16px;
+    }
+    .nav-link {
+        text-decoration: none;
+        color: #03BFF3;
+        transition: color 0.3s ease;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .hero-content {
+        padding: 15px 40px;
+        margin: 0 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .about-content {
+        padding: 0 10px;
+        min-height: 800px;
+        gap: 20px;
+    }
+    
+    .about-image {
+        max-width: 320px;
+    }
+    
+    .about-image img {
+        height: auto;
+        object-fit: contain;
+    }
+    
+    .about-text {
+        margin-bottom: 20px;
+    }
+    
+    .about-cards {
+        max-width: 320px;
+    }
+    
+    .card-content li {
+        font-size: 13px;
+        margin-left: 12px;
+        padding-left: 10px;
+    }
+
+    .team-content {
+        padding: 0 10px;
+    }
+
+    .team-members {
+        padding: 0 20px;
+        flex-wrap: nowrap;
+    }
+    
+    .member-photo {
+        height: 300px;
+    }
+
+    .contact-background {
+        padding: 5px;
+    }
+
+    .contact-content {
+        padding: 0 5px;
+    }
+    .nav-link {
+        text-decoration: none;
+        color: #03BFF3;
+        transition: color 0.3s ease;
+    }
+}
