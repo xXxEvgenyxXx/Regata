@@ -266,16 +266,113 @@ body {
 .card-title {
     font-weight: 700;
     font-size: 16px;
-    color: #000000;
+    color: rgba(5, 163, 214, 1);
     flex: 1;
 }
 
 .card-content p {
     font-weight: 500;
     font-size: 16px;
-    color: #000000;
+    color: rgba(140, 140, 140, 1);
     margin-bottom: 5px;
 }
+.card-content li {
+    color:rgba(140, 140, 140, 1);
+}
+/*Курс и бюджет*/
+.courses{
+    justify-self: center;
+    width:100%;
+    padding-right:25px;
+    padding-left:25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:200px;
+}
+.courses-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:16px;
+}
+.courses-header-wrapper h2{
+    color:rgba(5, 163, 214, 1);
+    font-size:32px;
+    font-weight:500;
+}
+.courses-header-wrapper h3{
+    color:rgba(140, 140, 140, 1);
+    font-size:20px;
+    font-weight:700;
+}
+.courses-preview-wrapper{
+    background: url('./images/turkey.jpg') no-repeat;
+    background-size: cover;
+    height: 877px;
+    border-radius:16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.courses-preview-location, .courses-preview-price{
+    border-radius:16px;
+    background-color: rgba(5, 163, 214, 1);
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-weight: 500;
+    font-family: "Druk Cyr",sans-serif;
+    text-align: center;
+}
+.courses-preview-location{
+    width:352px;
+}
+.courses-preview-price{
+    width:516px;
+}
+
+/*слайдер*/
+.slider{
+    margin-top:20px;
+    margin-bottom:226px;
+}
+.slider-items{
+    display: flex;
+    justify-content: center;
+    gap:66px;
+    margin-bottom:16px;
+}
+.slider-item{
+    width:19px;
+    height:19px;
+    border-radius:50%;
+    background-color: rgba(217, 217, 217, 1);
+    cursor:pointer;
+}
+.slider-item-active{
+    background-color: rgba(5, 163, 214, 1);
+    cursor:default;
+}
+.slider-buttons{
+    display:flex;
+    justify-content: center;
+    gap:40px;
+}
+.slider-button{
+    width:66px;
+    height:65px;
+    border-radius:50%;
+    background-color: rgba(5, 163, 214, 1);
+    border:1px solid rgba(5, 163, 214, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+}
+/*Лоция*/
 
 /* Команда */
 .team {
@@ -356,7 +453,7 @@ body {
 .member-name {
     font-weight: 700;
     font-size: 16.32px;
-    color: #000000;
+    color: rgba(5, 163, 214, 1);
 }
 
 .member-role {
