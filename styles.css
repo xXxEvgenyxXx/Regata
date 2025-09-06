@@ -318,7 +318,7 @@ body {
 .courses-preview-location, .courses-preview-price{
     border-radius:16px;
     background-color: rgba(5, 163, 214, 1);
-    font-size: 64px;
+    font-size: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -328,10 +328,10 @@ body {
     text-align: center;
 }
 .courses-preview-location{
-    width:352px;
+    width:20rem;
 }
 .courses-preview-price{
-    width:516px;
+    width:40rem;
 }
 
 /*слайдер*/
@@ -342,7 +342,7 @@ body {
 .slider-items{
     display: flex;
     justify-content: center;
-    gap:66px;
+    gap:55px;
     margin-bottom:16px;
 }
 .slider-item{
@@ -373,7 +373,166 @@ body {
     cursor:pointer;
 }
 /*Лоция*/
-
+.lotion-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:10px;
+}
+.lotion-header-wrapper h2{
+    font-size:32px;
+    color:rgba(5, 163, 214, 1);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.lotion-header-wrapper h3{
+    font-size:20px;
+    color:rgba(140, 140, 140, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.lotion-content-wrapper {
+    background-color: rgba(5, 163, 214, 0.3);
+    border-radius:16px;
+    padding: 6.6rem 3.1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:40px;
+    align-items: center;
+}
+.lotion-card {
+    background-color:white;
+    padding:20px 20px;
+    border-radius:16px;
+}
+.lotion-card-header{
+    background-color: rgba(63, 192, 235, 1);
+    width:25rem;
+    border-radius:16px;
+    padding-left:0.7rem;
+}
+.lotion-card-header h4 {
+    color:white;
+    font-size:24px;
+}
+.lotion-card-price{
+    font-size:14px;
+    font-weight:500;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#unique-card-header{
+    background-color: rgba(5, 163, 214, 1);
+}
+.lotion-card-content li {
+    font-size:1rem;
+    font-weight: 500;
+}
+.lotion-card-content ul {
+    margin-left:1rem;
+}
+.lotion-card-content p{
+    font-weight: 500;
+}
+.lotion-education-tour{
+    grid-column:1/3;
+}
+.lotion-education-tour{
+    display:flex;
+}
+.about-education-tour{
+    width:50%;
+}
+.about-education-program{
+    padding:23px 20px;
+}
+.about-education-tour > .lotion-class-header{ /*без этого стили сбрасываются, пусть будет*/
+    background-color: rgba(5, 163, 214, 1);
+    width:25rem;
+    border-radius:16px;
+    width:25rem;
+    padding-left:0.7rem;
+    font-weight:700;
+    color:white;
+}
+.about-education-tour > .lotion-card-content {
+    align-self:center;
+}
+.about-education-header{
+    background-color: rgba(63, 192, 235, 1);
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:16px;
+    width:18rem;
+    height:2em;
+    margin-top:10px;
+    margin-bottom:10px;
+    justify-self: center;
+}
+.about-education-additional-days{
+    text-align: center;
+    margin-bottom:10px;
+}
+.about-education-plus{
+    text-align: center;
+    margin-bottom:10px;
+}
+.about-education-days-desc{
+    display: flex;
+}
+.about-education-day{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:16px;
+    border:1px solid rgba(5, 163, 214, 0.3);
+    padding: 10px 20px;
+    margin-right:-10px;
+    width:168px;
+}
+.about-education-day h5{
+    font-size:14px;
+}
+.about-education-day p{
+    font-size:10px;
+}
+/*Галерея*/
+.gallery{
+    margin-top:226px;
+    padding: 0 25px;
+}
+.gallery-image {
+    height:877px;
+    width:100%;
+    background:url('./images/galery/IMAGE 2025-08-28 15_45_09.jpg') no-repeat;
+    background-size:cover;
+    border-radius:16px;
+}
+/*Безопасность*/
+.safety h2{
+    font-weight:500;
+    font-size:32px;
+    color: rgba(5, 163, 214, 1);
+    text-align: center;
+    margin-bottom:61px;
+}
+.safety-cards-wrapper{
+    display:flex;
+    gap:63px;
+    padding-left:31px;
+    padding-right:31px;
+}
+.safety-card{
+    padding:42px 20px;
+    border-radius:16px;
+    box-shadow: rgba(1, 57, 73, 0.25) 5px 5px;
+}
+.safety-accent{
+    color:rgba(5, 163, 214, 1);
+}
 /* Команда */
 .team {
     padding: 32px 0;
@@ -493,7 +652,7 @@ body {
     left: 0;
     right: 0;
     height: 128px;
-    background: linear-gradient(135deg, rgba(3, 191, 243, 0.5) 0%, rgba(5, 163, 214, 0.5) 100%);
+    /*background: linear-gradient(135deg, rgba(3, 191, 243, 0.5) 0%, rgba(5, 163, 214, 0.5) 100%);*/
     z-index: 1;
 }
 
