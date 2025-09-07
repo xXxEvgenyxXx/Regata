@@ -602,7 +602,7 @@ main{
 .gallery-image {
     height:500px;
     width:100%;
-    background:url('./images/galery/IMAGE 2025-08-28 15_45_09.jpg') no-repeat;
+    /*background:url('./images/galery/IMAGE 2025-08-28 15_45_09.jpg') no-repeat;*/
     background-size:cover;
     border-radius:16px;
     position: relative;
