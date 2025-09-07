@@ -7,7 +7,7 @@
 
 /* Подключение шрифта Druk Cyr */
 @font-face {
-    font-family: 'Druk Cyr', sans-serif;
+    font-family: 'Druk Cyr';
     src: url('./fonts/DrukCyr-Medium.woff2') format('woff2'),
          url('./fonts/DrukCyr-Medium.woff') format('woff'),
          url('./fonts/DrukCyr-Medium.eot') format('eot'),
@@ -18,7 +18,7 @@
 }
 
 @font-face {
-    font-family: 'Druk Cyr', sans-serif;
+    font-family: 'Druk Cyr';
     src: url('./fonts/DrukCyr-Bold.woff2') format('woff2'),
          url('./fonts/DrukCyr-Bold.woff') format('woff'),
          url('./fonts/DrukCyr-Bold.eot') format('eot'),
@@ -362,7 +362,7 @@ main{
     align-items: center;
     color:white;
     font-weight: 500;
-    font-family: 'Druk Cyr',sans-serif;
+    font-family: 'Druk Cyr', sans-serif;
     text-align: center;
 }
 
