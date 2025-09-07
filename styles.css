@@ -106,6 +106,7 @@ main{
     height: 35px;
     background: #F5F5F5;
     border-radius: 30px;
+    text-decoration: none;
 }
 
 .phone-icon {
@@ -333,17 +334,19 @@ main{
     font-weight:700;
 }
 
-.courses-preview-wrapper{
-    /*background: url('./images/turkey.jpg') no-repeat;*/
+.courses-preview-wrapper {
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 500px;
-    border-radius:16px;
+    border-radius: 16px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap:20px;
+    gap: 20px;
     position: relative;
-    overflow: hidden; /* Добавлено для скрытия слайдов за пределами контейнера */
+    overflow: hidden;
+    min-height: 300px; /* Минимальная высота для мобильных */
 }
 
 .courses-preview-location, .courses-preview-price{
@@ -382,13 +385,13 @@ main{
 .slider-items{
     display: flex;
     justify-content: center;
-    gap:40px;
+    gap:2.5rem;
     margin-bottom:16px;
 }
 
 .slider-item{
-    width:19px;
-    height:19px;
+    width:1.1rem;
+    height:1.1rem;
     border-radius:50%;
     background-color: rgba(217, 217, 217, 1);
     cursor:pointer;
@@ -600,15 +603,16 @@ main{
 }
 
 .gallery-image {
-    height:500px;
-    width:100%;
-    /*background:url('./images/galery/IMAGE 2025-08-28 15_45_09.jpg') no-repeat;*/
-    background-size:cover;
-    border-radius:16px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
+    border-radius: 16px;
     position: relative;
-    overflow: hidden; /* Добавлено для скрытия слайдов за пределами контейнера */
+    overflow: hidden;
+    min-height: 300px; /* Минимальная высота для мобильных */
 }
-
 /*Безопасность*/
 .safety h2{
     font-weight:500;
@@ -628,7 +632,8 @@ main{
 .safety-card{
     padding:42px 20px;
     border-radius:16px;
-    box-shadow: rgba(1, 57, 73, 0.25) 5px 5px;
+    box-shadow: 0 10px 20px rgba(1, 57, 73, 0.15);
+    transition: all 0.3s ease;
 }
 
 .safety-accent{
@@ -686,8 +691,8 @@ main{
 }
 
 .member-photo {
-    width: 260px;
-    height: 260px;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
@@ -928,7 +933,7 @@ main{
         padding-left: 15px;
     }
     .slider-items{
-        gap:35px;
+        gap:1.17rem;
     }
     .team-members {
         justify-content: center;
@@ -1106,7 +1111,25 @@ main{
         font-size:20px;
     }
     .slider-items{
-        gap:20px;
+        gap:0.5rem;
+    }
+    .courses-preview-wrapper,
+    .gallery-image {
+        height: 400px;
+    }
+    
+    .courses-preview-location, 
+    .courses-preview-price {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+    
+    .courses-preview-location {
+        width: 10rem;
+    }
+    
+    .courses-preview-price {
+        width: 15rem;
     }
     .team-content {
         padding: 0 20px;
@@ -1118,9 +1141,6 @@ main{
     .team-member {
         width: 100%;
         max-width: 350px;
-    }
-    .member-photo {
-        height: 350px;
     }
     .contact-background {
         padding: 20px;
@@ -1338,8 +1358,38 @@ main{
         color: #05A3D6;
         font-weight: bold;
     }
+    .courses-preview-wrapper,
+    .gallery-image {
+        height: 300px;
+    }
+    
+    .courses-preview-location, 
+    .courses-preview-price {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+    
+    .courses-preview-location {
+        width: 8rem;
+    }
+    
+    .courses-preview-price {
+        width: 12rem;
+        font-size: 0.9rem;
+    }
+    
+    .gallery {
+        margin-top: 100px;
+        padding: 0 15px;
+    }
+    
+    /* Для мобильных - одна колонка в safety */
+    .safety-cards-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
     .slider-items{
-        gap:8px;
+        gap:0.1rem;
     }
     .safety-cards-wrapper{
         display:flex;
@@ -1377,20 +1427,6 @@ main{
         flex-direction: column;
         gap: 56px;
         padding: 0 50px;
-    }
-    .team-member {
-        width: 306px;
-        height: 535px;
-        border-radius: 17.56px;
-        padding: 10px;
-        box-shadow: 0px 3.51px 7.02px rgba(1, 57, 73, 0.25);
-    }
-    .member-photo {
-        height: 412px;
-    }
-    .member-photo {
-        height: 412px;
-        border-radius: 19px;
     }
     .member-name {
         font-size: 16.32px;
@@ -1549,9 +1585,6 @@ main{
     .team-members {
         padding: 0 20px;
         flex-wrap: nowrap;
-    }
-    .member-photo {
-        height: 300px;
     }
     .contact-background {
         padding: 5px;
