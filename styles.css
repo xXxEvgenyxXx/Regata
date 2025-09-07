@@ -334,7 +334,7 @@ main{
 }
 
 .courses-preview-wrapper{
-    background: url('./images/turkey.jpg') no-repeat;
+    /*background: url('./images/turkey.jpg') no-repeat;*/
     background-size: cover;
     height: 500px;
     border-radius:16px;

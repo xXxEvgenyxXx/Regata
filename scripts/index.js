@@ -41,7 +41,8 @@ function initCoursesSlider() {
         slide.style.width = '100%';
         slide.style.height = '100%';
         slide.style.opacity = '0';
-        slide.style.transition = 'all 0.5s ease-out';
+        slide.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        slide.style.transform = 'translateX(100%)'; // Начальная позиция справа
         slidesContainer.appendChild(slide);
 
         // Создаем индикаторы
@@ -49,7 +50,8 @@ function initCoursesSlider() {
         indicator.className = 'slider-item';
         if (index === 0) {
             indicator.classList.add('slider-item-active');
-            slide.style.opacity = '1'; // Показываем первый слайд
+            slide.style.opacity = '1';
+            slide.style.transform = 'translateX(0)'; // Первый слайд по центру
         }
         indicator.addEventListener('click', () => {
             setActiveCourse(index);
@@ -62,69 +64,58 @@ function initCoursesSlider() {
     // Обработчики для кнопок
     buttons[0].addEventListener('click', () => {
         const newIndex = (currentIndex - 1 + dataForCourses.length) % dataForCourses.length;
-        setActiveCourse(newIndex, true); // true для анимации "назад"
+        setActiveCourse(newIndex, 'left');
     });
     buttons[1].addEventListener('click', () => {
         const newIndex = (currentIndex + 1) % dataForCourses.length;
-        setActiveCourse(newIndex, false); // false для анимации "вперед"
+        setActiveCourse(newIndex, 'right');
     });
 
     // Функция установки активного курса
-    function setActiveCourse(index, isReverse = false) {
-        if (currentIndex === index) return; // Если слайд тот же, ничего не делаем
+    function setActiveCourse(index, direction) {
+        if (currentIndex === index) return;
 
         const slides = slidesContainer.querySelectorAll('.slide');
         const currentSlide = slides[currentIndex];
         const nextSlide = slides[index];
 
         // Устанавливаем начальные позиции для анимации
-        if (isReverse) {
-            // Текущий слайд уезжает ВПРАВО, следующий въезжает СЛЕВА
-            currentSlide.style.transform = 'translateX(0)';
-            nextSlide.style.transform = 'translateX(-100%)';
-            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
-        } else {
-            // Текущий слайд уезжает ВЛЕВО, следующий въезжает СПРАВА
-            currentSlide.style.transform = 'translateX(0)';
+        if (direction === 'right') {
+            // Для движения вправо: текущий уезжает влево, новый заезжает справа
             nextSlide.style.transform = 'translateX(100%)';
-            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
-        }
-
-        // Запускаем анимацию с небольшой задержкой
-        setTimeout(() => {
-            if (isReverse) {
-                currentSlide.style.transform = 'translateX(100%)';
-                nextSlide.style.transform = 'translateX(0)';
-            } else {
+            nextSlide.style.opacity = '1';
+            
+            setTimeout(() => {
                 currentSlide.style.transform = 'translateX(-100%)';
                 nextSlide.style.transform = 'translateX(0)';
-            }
-        }, 10);
+            }, 10);
+        } else {
+            // Для движения влево: текущий уезжает вправо, новый заезжает слева
+            nextSlide.style.transform = 'translateX(-100%)';
+            nextSlide.style.opacity = '1';
+            
+            setTimeout(() => {
+                currentSlide.style.transform = 'translateX(100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            }, 10);
+        }
 
-        // Обновляем контент после начала анимации
+        // Обновляем контент
         locationElement.textContent = dataForCourses[index].location;
         priceElement.textContent = dataForCourses[index].price;
 
         // Обновляем индикаторы
         const items = itemsContainer.querySelectorAll('.slider-item');
         items.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('slider-item-active');
-            } else {
-                item.classList.remove('slider-item-active');
-            }
+            item.classList.toggle('slider-item-active', i === index);
         });
 
-        // Очищаем стили анимации после ее завершения
+        // Сбрасываем состояние после анимации
         setTimeout(() => {
-            currentSlide.style.transform = 'translateX(0)';
             currentSlide.style.opacity = '0';
-            nextSlide.style.transform = 'translateX(0)';
             currentIndex = index;
-        }, 500); // Должно совпадать с длительностью transition в CSS
+        }, 500);
     }
-
-    // Инициализация первого элемента уже выполнена при создании слайдов
 }
 
 // Функция для инициализации слайдера галереи
@@ -144,21 +135,19 @@ function initGallerySlider() {
     const originalClasses = galleryImage.className;
     const originalStyle = galleryImage.getAttribute('style') || '';
 
-    // Создаем контейнер для слайдов внутри .gallery-image
+    // Создаем контейнер для слайдов
     const slidesContainer = document.createElement('div');
     slidesContainer.className = 'gallery-slides-container';
     slidesContainer.style.position = 'relative';
     slidesContainer.style.width = '100%';
     slidesContainer.style.height = '100%';
-    slidesContainer.style.borderRadius = 'inherit'; // Наследуем border-radius
-    galleryImage.innerHTML = ''; // Очищаем содержимое
+    slidesContainer.style.borderRadius = 'inherit';
+    galleryImage.innerHTML = '';
     galleryImage.appendChild(slidesContainer);
-
-    // Восстанавливаем исходные классы и стили
     galleryImage.className = originalClasses;
     galleryImage.setAttribute('style', originalStyle);
 
-    // Создаем слайды для каждого элемента данных
+    // Создаем слайды
     dataForGallery.forEach((item, index) => {
         const slide = document.createElement('div');
         slide.className = 'gallery-slide';
@@ -171,9 +160,10 @@ function initGallerySlider() {
         slide.style.left = '0';
         slide.style.width = '100%';
         slide.style.height = '100%';
-        slide.style.borderRadius = 'inherit'; // Наследуем border-radius
+        slide.style.borderRadius = 'inherit';
         slide.style.opacity = '0';
-        slide.style.transition = 'all 0.5s ease-out';
+        slide.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        slide.style.transform = 'translateX(100%)'; // Начальная позиция справа
         slidesContainer.appendChild(slide);
 
         // Создаем индикаторы
@@ -181,7 +171,8 @@ function initGallerySlider() {
         indicator.className = 'slider-item';
         if (index === 0) {
             indicator.classList.add('slider-item-active');
-            slide.style.opacity = '1'; // Показываем первый слайд
+            slide.style.opacity = '1';
+            slide.style.transform = 'translateX(0)'; // Первый слайд по центру
         }
         indicator.addEventListener('click', () => {
             setActiveGalleryItem(index);
@@ -194,63 +185,52 @@ function initGallerySlider() {
     // Обработчики для кнопок
     leftButton.addEventListener('click', () => {
         const newIndex = (currentIndex - 1 + dataForGallery.length) % dataForGallery.length;
-        setActiveGalleryItem(newIndex, true); // true для анимации "назад"
+        setActiveGalleryItem(newIndex, 'left');
     });
     rightButton.addEventListener('click', () => {
         const newIndex = (currentIndex + 1) % dataForGallery.length;
-        setActiveGalleryItem(newIndex, false); // false для анимации "вперед"
+        setActiveGalleryItem(newIndex, 'right');
     });
 
     // Функция установки активного элемента галереи
-    function setActiveGalleryItem(index, isReverse = false) {
-        if (currentIndex === index) return; // Если слайд тот же, ничего не делаем
+    function setActiveGalleryItem(index, direction) {
+        if (currentIndex === index) return;
 
         const slides = slidesContainer.querySelectorAll('.gallery-slide');
         const currentSlide = slides[currentIndex];
         const nextSlide = slides[index];
 
-        // Устанавливаем начальные позиции для анимации
-        if (isReverse) {
-            // Текущий слайд уезжает ВПРАВО, следующий въезжает СЛЕВА
-            currentSlide.style.transform = 'translateX(0)';
-            nextSlide.style.transform = 'translateX(-100%)';
-            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
-        } else {
-            // Текущий слайд уезжает ВЛЕВО, следующий въезжает СПРАВА
-            currentSlide.style.transform = 'translateX(0)';
+        // Устанавливаем начальные позиции
+        if (direction === 'right') {
+            // Для движения вправо: текущий уезжает влево, новый заезжает справа
             nextSlide.style.transform = 'translateX(100%)';
-            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
-        }
-
-        // Запускаем анимацию с небольшой задержкой
-        setTimeout(() => {
-            if (isReverse) {
-                currentSlide.style.transform = 'translateX(100%)';
-                nextSlide.style.transform = 'translateX(0)';
-            } else {
+            nextSlide.style.opacity = '1';
+            
+            setTimeout(() => {
                 currentSlide.style.transform = 'translateX(-100%)';
                 nextSlide.style.transform = 'translateX(0)';
-            }
-        }, 10);
+            }, 10);
+        } else {
+            // Для движения влево: текущий уезжает вправо, новый заезжает слева
+            nextSlide.style.transform = 'translateX(-100%)';
+            nextSlide.style.opacity = '1';
+            
+            setTimeout(() => {
+                currentSlide.style.transform = 'translateX(100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            }, 10);
+        }
 
         // Обновляем индикаторы
         const items = itemsContainer.querySelectorAll('.slider-item');
         items.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('slider-item-active');
-            } else {
-                item.classList.remove('slider-item-active');
-            }
+            item.classList.toggle('slider-item-active', i === index);
         });
 
-        // Очищаем стили анимации после ее завершения
+        // Сбрасываем состояние после анимации
         setTimeout(() => {
-            currentSlide.style.transform = 'translateX(0)';
             currentSlide.style.opacity = '0';
-            nextSlide.style.transform = 'translateX(0)';
             currentIndex = index;
-        }, 500); // Добавляем задержку 500ms
+        }, 500);
     }
-
-    // Инициализация первого элемента уже выполнена при создании слайдов
 }
