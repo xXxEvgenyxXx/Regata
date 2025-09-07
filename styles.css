@@ -4,7 +4,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Подключение шрифта Druk Cyr */
+@font-face {
+    font-family: 'Druk Cyr', sans-serif;
+    src: url('./fonts/DrukCyr-Medium.woff2') format('woff2'),
+         url('./fonts/DrukCyr-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
+@font-face {
+    font-family: 'Druk Cyr', sans-serif;
+    src: url('./fonts/DrukCyr-Bold.woff2') format('woff2'),
+         url('./fonts/DrukCyr-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
@@ -283,8 +300,6 @@ body {
 .courses{
     justify-self: center;
     width:100%;
-    padding-right:25px;
-    padding-left:25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -324,7 +339,7 @@ body {
     align-items: center;
     color:white;
     font-weight: 500;
-    font-family: "Druk Cyr",sans-serif;
+    font-family: 'Druk Cyr',sans-serif;
     text-align: center;
 }
 .courses-preview-location{
@@ -1418,6 +1433,12 @@ body {
         display:flex;
         flex-direction: column;
     }
+    .courses-preview-location {
+        width:10rem;
+    }
+    .courses-preview-price {
+        width:15rem;
+    }
 
     /* Команда */
     .team {
@@ -1660,6 +1681,13 @@ body {
 
     .contact-content {
         padding: 0 5px;
+    }
+    .courses-preview-location {
+        width:10rem;
+        font-size:1.5rem;
+    }
+    .courses-preview-price {
+        width:11.5rem;
     }
     .nav-link {
         text-decoration: none;
