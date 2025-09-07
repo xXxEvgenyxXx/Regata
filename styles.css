@@ -832,6 +832,9 @@ body {
         margin-left: 20px;
         padding-left: 15px;
     }
+    .slider-items{
+        gap:45px;
+    }
 
     .team-members {
         justify-content: center;
@@ -974,6 +977,58 @@ body {
         margin-left: 18px;
         padding-left: 14px;
     }
+    .courses-preview-location, .courses-preview-price {
+        font-size: 2rem;
+    }
+
+    .courses-preview-location {
+        width: 15rem;
+    }
+    .courses-preview-price {
+        width: 20rem;
+    }
+    .lotion-content-wrapper {
+        display:flex;
+        flex-direction: column;
+    }
+    .lotion-education-tour{ 
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-education-days-desc {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-education-header h4{
+        font-size:22px;
+    }
+    .about-education-tour {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-education-day {
+        margin-right:0;
+        margin-bottom:-10px;
+        width:350px;
+    }
+    .about-education-day h5{
+        font-size:25px;
+    }
+    .about-education-day p{
+        font-size:20px;
+    }
+    .safety-cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .safety-card p {
+        font-size:20px;
+    }
+    .slider-items{
+        gap:20px;
+    }
+    
 
     .team-content {
         padding: 0 20px;
@@ -1245,6 +1300,14 @@ body {
         font-weight: bold;
     }
 
+    .slider-items{
+        gap:8px;
+    }
+    .safety-cards-wrapper{
+        display:flex;
+        flex-direction: column;
+    }
+
     /* Команда */
     .team {
         padding: 30px 20px;
@@ -1461,6 +1524,10 @@ body {
         font-size: 13px;
         margin-left: 12px;
         padding-left: 10px;
+    }
+    .slider-item {
+        width:10px;
+        height:10px;
     }
 
     .team-content {
