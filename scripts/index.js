@@ -77,24 +77,29 @@ function initCoursesSlider() {
         const currentSlide = slides[currentIndex];
         const nextSlide = slides[index];
 
-        // Добавляем классы для анимации
+        // Устанавливаем начальные позиции для анимации
         if (isReverse) {
-            // Анимация для кнопки "назад"
-            currentSlide.classList.add('slide-exit-reverse');
-            nextSlide.classList.add('slide-enter-reverse');
-            setTimeout(() => {
-                currentSlide.classList.add('slide-exit-reverse-active');
-                nextSlide.classList.add('slide-enter-reverse-active');
-            }, 10);
+            // Текущий слайд уезжает ВПРАВО, следующий въезжает СЛЕВА
+            currentSlide.style.transform = 'translateX(0)';
+            nextSlide.style.transform = 'translateX(-100%)';
+            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
         } else {
-            // Анимация для кнопки "вперед"
-            currentSlide.classList.add('slide-exit');
-            nextSlide.classList.add('slide-enter');
-            setTimeout(() => {
-                currentSlide.classList.add('slide-exit-active');
-                nextSlide.classList.add('slide-enter-active');
-            }, 10);
+            // Текущий слайд уезжает ВЛЕВО, следующий въезжает СПРАВА
+            currentSlide.style.transform = 'translateX(0)';
+            nextSlide.style.transform = 'translateX(100%)';
+            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
         }
+
+        // Запускаем анимацию с небольшой задержкой
+        setTimeout(() => {
+            if (isReverse) {
+                currentSlide.style.transform = 'translateX(100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            } else {
+                currentSlide.style.transform = 'translateX(-100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            }
+        }, 10);
 
         // Обновляем контент после начала анимации
         locationElement.textContent = dataForCourses[index].location;
@@ -110,12 +115,11 @@ function initCoursesSlider() {
             }
         });
 
-        // Очищаем классы анимации после ее завершения
+        // Очищаем стили анимации после ее завершения
         setTimeout(() => {
-            currentSlide.classList.remove('slide-exit', 'slide-exit-active', 'slide-exit-reverse', 'slide-exit-reverse-active');
-            nextSlide.classList.remove('slide-enter', 'slide-enter-active', 'slide-enter-reverse', 'slide-enter-reverse-active');
+            currentSlide.style.transform = 'translateX(0)';
             currentSlide.style.opacity = '0';
-            nextSlide.style.opacity = '1';
+            nextSlide.style.transform = 'translateX(0)';
             currentIndex = index;
         }, 500); // Должно совпадать с длительностью transition в CSS
     }
@@ -131,7 +135,6 @@ function initGallerySlider() {
         console.error('Слайдер галереи не найден!');
         return;
     }
-    
     const itemsContainer = slider.querySelector('.slider-items');
     const leftButton = slider.querySelector('.slider-button-left');
     const rightButton = slider.querySelector('.slider-button-right');
@@ -193,7 +196,6 @@ function initGallerySlider() {
         const newIndex = (currentIndex - 1 + dataForGallery.length) % dataForGallery.length;
         setActiveGalleryItem(newIndex, true); // true для анимации "назад"
     });
-    
     rightButton.addEventListener('click', () => {
         const newIndex = (currentIndex + 1) % dataForGallery.length;
         setActiveGalleryItem(newIndex, false); // false для анимации "вперед"
@@ -207,24 +209,29 @@ function initGallerySlider() {
         const currentSlide = slides[currentIndex];
         const nextSlide = slides[index];
 
-        // Добавляем классы для анимации
+        // Устанавливаем начальные позиции для анимации
         if (isReverse) {
-            // Анимация для кнопки "назад" - сдвиг вправо
-            currentSlide.classList.add('gallery-slide-exit-reverse');
-            nextSlide.classList.add('gallery-slide-enter-reverse');
-            setTimeout(() => {
-                currentSlide.classList.add('gallery-slide-exit-reverse-active');
-                nextSlide.classList.add('gallery-slide-enter-reverse-active');
-            }, 10);
+            // Текущий слайд уезжает ВПРАВО, следующий въезжает СЛЕВА
+            currentSlide.style.transform = 'translateX(0)';
+            nextSlide.style.transform = 'translateX(-100%)';
+            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
         } else {
-            // Анимация для кнопки "вперед" - сдвиг влево
-            currentSlide.classList.add('gallery-slide-exit');
-            nextSlide.classList.add('gallery-slide-enter');
-            setTimeout(() => {
-                currentSlide.classList.add('gallery-slide-exit-active');
-                nextSlide.classList.add('gallery-slide-enter-active');
-            }, 10);
+            // Текущий слайд уезжает ВЛЕВО, следующий въезжает СПРАВА
+            currentSlide.style.transform = 'translateX(0)';
+            nextSlide.style.transform = 'translateX(100%)';
+            nextSlide.style.opacity = '1'; // Делаем следующий видимым сразу
         }
+
+        // Запускаем анимацию с небольшой задержкой
+        setTimeout(() => {
+            if (isReverse) {
+                currentSlide.style.transform = 'translateX(100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            } else {
+                currentSlide.style.transform = 'translateX(-100%)';
+                nextSlide.style.transform = 'translateX(0)';
+            }
+        }, 10);
 
         // Обновляем индикаторы
         const items = itemsContainer.querySelectorAll('.slider-item');
@@ -236,12 +243,11 @@ function initGallerySlider() {
             }
         });
 
-        // Очищаем классы анимации после ее завершения
+        // Очищаем стили анимации после ее завершения
         setTimeout(() => {
-            currentSlide.classList.remove('gallery-slide-exit', 'gallery-slide-exit-active', 'gallery-slide-exit-reverse', 'gallery-slide-exit-reverse-active');
-            nextSlide.classList.remove('gallery-slide-enter', 'gallery-slide-enter-active', 'gallery-slide-enter-reverse', 'gallery-slide-enter-reverse-active');
+            currentSlide.style.transform = 'translateX(0)';
             currentSlide.style.opacity = '0';
-            nextSlide.style.opacity = '1';
+            nextSlide.style.transform = 'translateX(0)';
             currentIndex = index;
         }, 500); // Добавляем задержку 500ms
     }
