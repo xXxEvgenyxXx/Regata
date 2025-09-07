@@ -1,4 +1,4 @@
-const dataForCourses = [{
+export const dataForCourses = [{
     image: '../images/turkey.jpg',
     location: 'ТУРЦИЯ',
     price: 'ОТ € 1 800 ЗА ЧЕЛОВЕКА'
@@ -7,7 +7,7 @@ const dataForCourses = [{
     location: 'ИСПАНИЯ',
     price: 'ОТ € 2 600'
 }]
-const dataForGallery = [
+export const dataForGallery = [
     {
         image:'../images/galery/2025-08-28 15.43.41.jpg',
     },

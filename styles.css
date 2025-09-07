@@ -342,7 +342,7 @@ body {
 .slider-items{
     display: flex;
     justify-content: center;
-    gap:55px;
+    gap:40px;
     margin-bottom:16px;
 }
 .slider-item{
@@ -371,6 +371,137 @@ body {
     justify-content: center;
     align-items: center;
     cursor:pointer;
+}
+/* Анимации для слайдера курсов */
+.courses-preview-wrapper {
+    transition: none; /* Отключаем стандартный transition, чтобы не мешал JS-анимации */
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-exit,
+.slide-enter,
+.slide-exit-reverse,
+.slide-enter-reverse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+}
+
+.slide-exit {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.slide-exit.slide-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide-enter {
+    transform: translateX(-100%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.slide-enter.slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Обратные анимации для кнопки "назад" */
+.slide-exit-reverse {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.slide-exit-reverse.slide-exit-reverse-active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.slide-enter-reverse {
+    transform: translateX(100%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.slide-enter-reverse.slide-enter-reverse-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Анимации для слайдера галереи */
+.gallery-image {
+    transition: none; /* Отключаем стандартный transition, чтобы не мешал JS-анимации */
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-slide-exit,
+.gallery-slide-enter,
+.gallery-slide-exit-reverse,
+.gallery-slide-enter-reverse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: all 0.5s ease-out;
+}
+
+.gallery-slide-exit {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.gallery-slide-exit.gallery-slide-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.gallery-slide-enter {
+    transform: translateX(-100%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.gallery-slide-enter.gallery-slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Обратные анимации для кнопки "назад" */
+.gallery-slide-exit-reverse {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.gallery-slide-exit-reverse.gallery-slide-exit-reverse-active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.gallery-slide-enter-reverse {
+    transform: translateX(100%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.gallery-slide-enter-reverse.gallery-slide-enter-reverse-active {
+    transform: translateX(0);
+    opacity: 1;
 }
 /*Лоция*/
 .lotion-header-wrapper{
@@ -833,7 +964,7 @@ body {
         padding-left: 15px;
     }
     .slider-items{
-        gap:45px;
+        gap:35px;
     }
 
     .team-members {
