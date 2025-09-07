@@ -1042,7 +1042,6 @@ main{
         max-width: 100%;
         order: -1;
         width: 100%;
-        max-width: 450px;
     }
     .about-image img {
         height: auto;
@@ -1284,7 +1283,6 @@ main{
         max-width: 100%;
         order: -1;
         width: 100%;
-        max-width: 350px;
         margin-bottom: 20px;
     }
     .about-image img {
@@ -1546,9 +1544,6 @@ main{
         padding: 0 10px;
         min-height: 800px;
         gap: 20px;
-    }
-    .about-image {
-        max-width: 320px;
     }
     .about-image img {
         height: auto;
