@@ -343,7 +343,7 @@ main{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 550px;
     border-radius: 16px;
     display: flex;
     justify-content: space-between;
@@ -611,7 +611,7 @@ main{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 550px;
     width: 100%;
     border-radius: 16px;
     position: relative;
