@@ -345,6 +345,7 @@ main{
     color:rgba(140, 140, 140, 1);
     font-size:20px;
     font-weight:700;
+    text-align: center;
 }
 
 .courses-preview-wrapper {
