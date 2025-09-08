@@ -1427,10 +1427,8 @@ main{
         height: 300px;
     }
     
-    .courses-preview-location, 
-    .courses-preview-price {
-        font-size: 1rem;
-        padding: 8px 12px;
+    .courses-preview-location {
+        font-size: 1.5rem;
     }
     
     .courses-preview-location {
@@ -1439,7 +1437,7 @@ main{
     
     .courses-preview-price {
         width: 12rem;
-        font-size: 0.9rem;
+        font-size: 1.5rem;
     }
     
     .gallery {
