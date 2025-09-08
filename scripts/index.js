@@ -6,7 +6,132 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM загружен, инициализируем слайдеры');
     initCoursesSlider();
     initGallerySlider();
+    initPhoneInputMask();
 });
+
+// Маска ввода телефона + клиентская валидация
+function initPhoneInputMask() {
+    const phoneInput = document.getElementById('phoneInput');
+    const form = document.querySelector('form.contact-form');
+    if (!phoneInput || !form) return;
+
+    // Установим плейсхолдер по формату
+    phoneInput.setAttribute('placeholder', '+7 (___) ___-__-__');
+
+    function formatPhone(value) {
+        const digits = value.replace(/\D/g, '');
+        let result = '+7 ';
+        // Если пользователь начал не с 7 или 8 — насильно приводим к 7
+        let numbers = digits;
+        if (numbers.startsWith('7')) {
+            numbers = numbers.slice(1);
+        } else if (numbers.startsWith('8')) {
+            numbers = numbers.slice(1);
+        }
+        // Собираем по маске (XXX) XXX-XX-XX
+        if (numbers.length > 0) result += '(' + numbers.substring(0, Math.min(3, numbers.length));
+        if (numbers.length >= 3) result += ') ' + numbers.substring(3, Math.min(6, numbers.length));
+        if (numbers.length >= 6) result += '-' + numbers.substring(6, Math.min(8, numbers.length));
+        if (numbers.length >= 8) result += '-' + numbers.substring(8, Math.min(10, numbers.length));
+        return result.trim();
+    }
+
+    function handleInput(e) {
+        const raw = e.target.value;
+        // Разрешим вводить только цифры, пробелы и знаки форматирования, затем переформатируем
+        const cleaned = raw.replace(/[^\d+]/g, '');
+        let withCountry = cleaned;
+        if (!withCountry.startsWith('+7')) {
+            withCountry = '+7' + withCountry.replace(/^\+?7?/, '');
+        }
+        e.target.value = formatPhone(withCountry);
+    }
+
+    function isValidPhone(inputValue) {
+        const onlyDigits = inputValue.replace(/\D/g, '');
+        // Ожидаем 11 цифр с начальной 7
+        return /^7\d{10}$/.test(onlyDigits);
+    }
+
+    phoneInput.addEventListener('input', handleInput);
+    phoneInput.addEventListener('focus', () => {
+        if (!phoneInput.value) phoneInput.value = '+7 ';
+    });
+    phoneInput.addEventListener('blur', () => {
+        if (!isValidPhone(phoneInput.value)) {
+            // Если номер неполный — очищаем поле
+            phoneInput.value = '';
+        }
+    });
+
+    // Контейнер для статуса
+    let statusEl = document.querySelector('.form-status');
+    if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.className = 'form-status';
+        statusEl.style.marginTop = '12px';
+        statusEl.style.fontSize = '14px';
+        statusEl.style.lineHeight = '1.4';
+        statusEl.style.minHeight = '20px';
+        form.appendChild(statusEl);
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!isValidPhone(phoneInput.value)) {
+            statusEl.style.color = '#ff6b6b';
+            statusEl.textContent = 'Введите корректный номер телефона в формате +7 (XXX) XXX-XX-XX';
+            return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : '';
+        try {
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправляем...';
+            }
+            statusEl.style.color = '#888';
+            statusEl.textContent = 'Отправка...';
+
+            const digits = phoneInput.value.replace(/\D/g, '');
+            const normalized = '+' + digits; // +7XXXXXXXXXX
+
+            const formData = new URLSearchParams();
+            formData.set('phone', normalized);
+
+            const response = await fetch(form.getAttribute('action') || 'sendmail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formData.toString()
+            });
+
+            const isJson = response.headers.get('content-type')?.includes('application/json');
+            const payload = isJson ? await response.json() : null;
+
+            if (response.ok && payload && payload.success) {
+                statusEl.style.color = '#2e7d32';
+                statusEl.textContent = payload.message || 'Заявка успешно отправлена';
+                form.reset();
+            } else {
+                const errorText = payload?.error || 'Не удалось отправить заявку. Попробуйте позже.';
+                statusEl.style.color = '#ff6b6b';
+                statusEl.textContent = errorText;
+            }
+        } catch (err) {
+            statusEl.style.color = '#ff6b6b';
+            statusEl.textContent = 'Ошибка сети. Проверьте соединение и попробуйте снова.';
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        }
+    });
+}
 
 // Функция для инициализации слайдера курсов
 function initCoursesSlider() {

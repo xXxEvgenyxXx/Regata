@@ -21,22 +21,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Настройки письма
     $to = 'fox.celesta@yandex.ru'; // Замените на свой email
     $subject = 'Заявка на корпоративную регату';
-    $message = "Новый запрос с сайта:\n\n"
-               . "Телефон: " . htmlspecialchars($phone_clean) . "\n"
-               . "Время отправки: " . date('Y-m-d H:i:s');
+    $message = '<html><body>'
+        . '<h2>Новая заявка с сайта</h2>'
+        . '<p><strong>Телефон:</strong> ' . htmlspecialchars($phone_clean) . '</p>'
+        . '<p><strong>Время отправки:</strong> ' . date('Y-m-d H:i:s') . '</p>'
+        . '</body></html>';
     
     // Заголовки
-    $headers = "Content-type: text/html; charset=utf-8\r\n"
-           . "From: postmaster@regata.team\r\n"
-           . "Reply-To: " . $phone_clean . "\r\n"
-           . "X-Mailer: PHP/" . phpversion()
-           . "MIME-Version: 1.0\r\n";
+    $headers = '';
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: REGATA <postmaster@regata.team>\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+
+    // Параметры отправки (Envelope From) для лучшей доставляемости
+    $params = '-f postmaster@regata.team';
     
     // Отправка письма
-if (mail($to, $subject, $message, $headers)) {
-    header('Location: thank-you.html'); // Перенаправление на страницу благодарности
-    exit;
+    header('Content-Type: application/json; charset=UTF-8');
+    if (mail($to, $subject, $message, $headers, $params)) {
+        echo json_encode(['success' => true, 'message' => 'Заявка успешно отправлена']);
+        exit;
+    } else {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'error' => 'Ошибка при отправке формы']);
+        exit;
+    }
 } else {
-    die(json_encode(['success' => false, 'error' => 'Ошибка при отправке формы']));
+    http_response_code(405);
+    echo json_encode(['success' => false, 'error' => 'Метод не поддерживается']);
 }
 ?>
