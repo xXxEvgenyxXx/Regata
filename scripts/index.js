@@ -144,6 +144,7 @@ function initCoursesSlider() {
 }
 
 // Функция для инициализации слайдера галереи
+// Функция для инициализации слайдера галереи
 function initGallerySlider() {
     console.log('Инициализация слайдера галереи');
     const slider = document.getElementById('slider-for-gallery');
@@ -171,6 +172,30 @@ function initGallerySlider() {
     galleryImage.appendChild(slidesContainer);
     galleryImage.className = originalClasses;
     galleryImage.setAttribute('style', originalStyle);
+
+    const images = []; // Массив для хранения размеров изображений
+
+    function loadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve({ width: img.width, height: img.height });
+            img.onerror = reject;
+            img.src = url;
+        });
+    }
+
+    // Загружаем размеры всех изображений
+    Promise.all(dataForGallery.map(item => loadImage(item.image)))
+        .then(dimensions => {
+            dimensions.forEach((dim, index) => {
+                images[index] = dim;
+            });
+            // Устанавливаем размеры для первого изображения
+            setBackgroundSize(galleryImage, images[0]);
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки изображений галереи:', error);
+        });
 
     // Создаем слайды
     dataForGallery.forEach((item, index) => {
@@ -257,5 +282,14 @@ function initGallerySlider() {
             currentSlide.style.opacity = '0';
             currentIndex = index;
         }, 500);
+
+        // Обновляем размеры контейнера под текущее изображение
+        setBackgroundSize(galleryImage, images[index]);
+    }
+
+    // Вспомогательная функция для установки размеров контейнера под изображение
+    function setBackgroundSize(element, dimensions) {
+        element.style.width = `${dimensions.width}px`;
+        element.style.height = `${dimensions.height}px`;
     }
 }
