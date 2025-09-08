@@ -1635,6 +1635,9 @@ main{
 
 /* Дополнительные стили для очень маленьких экранов */
 @media (max-width: 360px) {
+    .courses-preview-location, .courses-preview-price {
+        width:9rem;
+    }
     .hero-content {
         padding: 15px 40px;
         margin: 0 10px;
