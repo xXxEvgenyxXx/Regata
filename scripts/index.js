@@ -173,36 +173,15 @@ function initGallerySlider() {
     galleryImage.className = originalClasses;
     galleryImage.setAttribute('style', originalStyle);
 
-    const images = []; // Массив для хранения размеров изображений
-
-    function loadImage(url) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve({ width: img.width, height: img.height });
-            img.onerror = reject;
-            img.src = url;
-        });
-    }
-
-    // Загружаем размеры всех изображений
-    Promise.all(dataForGallery.map(item => loadImage(item.image)))
-        .then(dimensions => {
-            dimensions.forEach((dim, index) => {
-                images[index] = dim;
-            });
-            // Устанавливаем размеры для первого изображения
-            setBackgroundSize(galleryImage, images[0]);
-        })
-        .catch(error => {
-            console.error('Ошибка загрузки изображений галереи:', error);
-        });
+    // Для галереи не фиксируем размеры контейнера под реальный размер фото,
+    // чтобы сохранять адаптивную вёрстку. Масштабирование делаем через background-size: contain.
 
     // Создаем слайды
     dataForGallery.forEach((item, index) => {
         const slide = document.createElement('div');
         slide.className = 'gallery-slide';
         slide.style.backgroundImage = `url('${item.image}')`;
-        slide.style.backgroundSize = 'cover';
+        slide.style.backgroundSize = 'contain';
         slide.style.backgroundPosition = 'center';
         slide.style.backgroundRepeat = 'no-repeat';
         slide.style.position = 'absolute';
@@ -283,13 +262,7 @@ function initGallerySlider() {
             currentIndex = index;
         }, 500);
 
-        // Обновляем размеры контейнера под текущее изображение
-        setBackgroundSize(galleryImage, images[index]);
+        // Размеры контейнера не изменяем — сохраняем адаптивность блока галереи
     }
 
-    // Вспомогательная функция для установки размеров контейнера под изображение
-    function setBackgroundSize(element, dimensions) {
-        element.style.width = `${dimensions.width}px`;
-        element.style.height = `${dimensions.height}px`;
-    }
 }
