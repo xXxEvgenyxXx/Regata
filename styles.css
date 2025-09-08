@@ -453,6 +453,11 @@ main{
     transition: all 0.5s ease-out;
 }
 
+/* Для галереи сохраняем ориентацию изображения без обрезки */
+.gallery-slide {
+    background-size: contain;
+}
+
 /*Лоция*/
 .lotion-header-wrapper{
     display: flex;
