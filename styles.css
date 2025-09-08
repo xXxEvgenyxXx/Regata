@@ -451,6 +451,7 @@ main{
     background-repeat: no-repeat;
     opacity: 0;
     transition: all 0.5s ease-out;
+    border-radius: 16px;
 }
 
 /* Для галереи сохраняем ориентацию изображения без обрезки */
@@ -1260,7 +1261,7 @@ main{
         height: 80vh;
         margin-top: 60px;
         width: 100%;
-        max-width: 393px;
+        max-width: 99vw;
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
