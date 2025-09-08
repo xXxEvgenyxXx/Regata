@@ -1,7 +1,6 @@
 /* Сброс стилей и базовые настройки */
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -1154,8 +1153,8 @@ main{
         padding: 0 20px;
     }
     .team-members {
-        flex-direction: column;
-        align-items: center;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
     }
     .team-member {
         width: 100%;
