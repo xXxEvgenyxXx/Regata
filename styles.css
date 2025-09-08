@@ -1434,6 +1434,39 @@ main{
         margin-top: 100px;
         padding: 0 15px;
     }
+    .lotion-card-header {
+        width:13rem;
+    }
+    .lotion-card-header h4{
+        font-size:14px;
+        width:10rem;
+    }
+    .about-education-tour > .lotion-class-header {
+        width:13rem;
+    }
+    .about-education-program {
+        width:15rem;
+    }
+    .about-education-header{
+        width:13rem;
+        font-size:28px;
+        text-align: center;
+    }
+    .about-education-day {
+        width:215px;
+    }
+    .about-education-day h5 {
+        font-size:20px;
+    }
+    .about-education-day p{
+        font-size:17px;
+    }
+    .about-education-also h4 {
+        font-size:17px;
+    }
+    .about-education-also-card {
+        font-size:14px;
+    }
     
     /* Для мобильных - одна колонка в safety */
     .safety-cards-wrapper {
