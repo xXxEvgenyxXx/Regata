@@ -244,12 +244,13 @@ main{
     font-size: 32px;
     color: #05A3D6;
     margin-bottom: 20px;
+    font-family:'Druk Cyr',sans-serif;
 }
 
 .about-subtitle {
     font-weight: 600;
     font-size: 20px;
-    color: #3FC0EB;
+    color: rgba(140, 140, 140, 1);
     line-height: 1.22;
     margin-bottom: 15px;
 }
@@ -332,6 +333,7 @@ main{
     color:rgba(5, 163, 214, 1);
     font-size:32px;
     font-weight:500;
+    font-family: 'Druk Cyr',sans-serif;
 }
 
 .courses-header-wrapper h3{
@@ -375,7 +377,7 @@ main{
 }
 
 .courses-preview-price{
-    width:50%;
+    width:35%;
     z-index:100;
     position:absolute;
     right:0;
