@@ -88,7 +88,7 @@
       ]
     }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    
 </head>
 <body>
     <!-- Навигация -->
@@ -476,30 +476,7 @@
         </div>
     </section>
     </main>
-    <script>
-        $(document).ready(function () {
-            $('#phoneInput').on('keyup change paste', function () {
-                var phoneValue = $(this).val().replace(/[^+\d]/g, ''); // Удаление всех символов кроме плюса и цифр
-                
-                // Проверка валидности номера
-                var isValidPhone = /^(\+7)?\d{10}$/.test(phoneValue);
-                
-                if (!isValidPhone) {
-                    $('.error-message').show(); // Показываем ошибку
-                } else {
-                    $('.error-message').hide(); // Скрываем ошибку
-                }
-                
-                // Форматирование номера для удобства пользователя
-                if (phoneValue.length > 1 && phoneValue.charAt(0) === '+') {
-                    phoneValue = '+' + phoneValue.slice(1).match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/)
-                        .slice(1).join('-'); // Формируем удобный вид +7XXX-XXX-XX-XX
-                }
-                
-                $(this).val(phoneValue); // Обновляем значение поля
-            });
-        });
-        </script>
+    
 
 
     <script>
