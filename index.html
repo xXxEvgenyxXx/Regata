@@ -13,21 +13,29 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Regata.team - Корпоративные регаты и тимбилдинг на море">
-    <meta property="og:description" content="Организация корпоративных регат и тимбилдинга на море. Эксперты в яхт-мероприятиях с 10-летним опытом.">
+    <meta property="og:description" content="Организация корпоративных регат и тимбилдинга на море. Эксперты в яхт-мероприятиях.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://regata.team">
     <meta property="og:image" content="images/hero-bg.png">
+    <meta property="og:site_name" content="Regata.team">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:image:alt" content="Regata.team — корпоративные регаты и тимбилдинг на море">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Regata.team - Корпоративные регаты и тимбилдинг на море">
     <meta name="twitter:description" content="Организация корпоративных регат и тимбилдинга на море. Эксперты в яхт-мероприятиях.">
+    <meta name="twitter:image" content="images/hero-bg.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://regata.team">
+    <link rel="alternate" hreflang="ru" href="https://regata.team/">
+    <link rel="alternate" hreflang="x-default" href="https://regata.team/">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Druk+Cyr:wght@500;700&display=swap" rel="stylesheet">
@@ -54,7 +62,33 @@
         }
     }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://regata.team/"},
+        {"@type": "ListItem", "position": 2, "name": "Курс и бюджет", "item": "https://regata.team/#services"},
+        {"@type": "ListItem", "position": 3, "name": "Лоция регаты", "item": "https://regata.team/#regatta"},
+        {"@type": "ListItem", "position": 4, "name": "Команда", "item": "https://regata.team/#team"},
+        {"@type": "ListItem", "position": 5, "name": "Контакты", "item": "https://regata.team/#contact"}
+      ]
+    }
+    </script>
+    <!-- FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "Сколько стоит корпоративная регата?","acceptedAnswer": {"@type": "Answer","text": "Базовые программы от €1 800 за человека. Индивидуальные туры рассчитываются под задачу и бюджет."}},
+        {"@type": "Question","name": "Безопасно ли это?","acceptedAnswer": {"@type": "Answer","text": "Каждая яхта под управлением профессионального капитана, маршруты у береговой линии, современные яхты с кондиционерами."}},
+        {"@type": "Question","name": "Можно ли адаптировать программу под компанию?","acceptedAnswer": {"@type": "Answer","text": "Да. Мы проектируем программу с нуля под цели заказчика: тимбилдинг, воркшопы, коучинг-ретриты и др."}}
+      ]
+    }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 </head>
 <body>
     <!-- Навигация -->
