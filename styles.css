@@ -1256,7 +1256,7 @@ main{
         flex-direction: row;
     }
     .nav-logo .logo-text {
-        font-size: 12px;
+        font-size: 1rem;
         padding: 10px;
         border-radius: 30px;
     }
@@ -1313,7 +1313,7 @@ main{
         min-height: 400px;
     }
     .hero-content {
-        padding: 20px 60px 50px 60px;
+        padding: 20px 60px;
         margin: 0;
         border-radius: 50px;
         border-width: 15px;
