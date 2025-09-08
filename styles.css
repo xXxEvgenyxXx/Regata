@@ -609,6 +609,9 @@ main{
 .gallery{
     margin-top:226px;
     padding: 0 25px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gallery-image {
