@@ -89,7 +89,9 @@ main{
 .nav-link:hover {
     color: #05A3D6;
 }
-
+.waves {
+    margin-bottom:-10px;
+}
 .nav-hamburger {
     display: none;
     cursor: pointer;
