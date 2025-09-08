@@ -26,6 +26,26 @@ function initCoursesSlider() {
     const slidesContainer = document.createElement('div');
     slidesContainer.className = 'slides-container';
     previewWrapper.appendChild(slidesContainer);
+    const images = [];
+    function loadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve({ width: img.width, height: img.height });
+            img.onerror = reject;
+            img.src = url;
+        });
+    }
+    Promise.all(dataForCourses.map(item => loadImage(item.image)))
+        .then(dimensions => {
+            dimensions.forEach((dim, index) => {
+                images[index] = dim;
+            });
+            // Установка размеров для первого изображения
+            setBackgroundSize(previewWrapper, images[0]);
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки изображений:', error);
+        });
 
     // Создаем слайды для каждого элемента данных
     dataForCourses.forEach((item, index) => {
@@ -115,6 +135,11 @@ function initCoursesSlider() {
             currentSlide.style.opacity = '0';
             currentIndex = index;
         }, 500);
+        setBackgroundSize(previewWrapper, images[index]);
+    }
+    function setBackgroundSize(element, dimensions) {
+        element.style.width = `${dimensions.width}px`;
+        element.style.height = `${dimensions.height}px`;
     }
 }
 
