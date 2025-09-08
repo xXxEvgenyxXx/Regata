@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://regata.team/sitemap.xml
+Host: regata.team
