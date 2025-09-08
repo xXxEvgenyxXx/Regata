@@ -26,35 +26,12 @@ function initCoursesSlider() {
     const slidesContainer = document.createElement('div');
     slidesContainer.className = 'slides-container';
     previewWrapper.appendChild(slidesContainer);
-    const images = [];
-    function loadImage(url) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve({ width: img.width, height: img.height });
-            img.onerror = reject;
-            img.src = url;
-        });
-    }
-    Promise.all(dataForCourses.map(item => loadImage(item.image)))
-        .then(dimensions => {
-            dimensions.forEach((dim, index) => {
-                images[index] = dim;
-            });
-            // Установка размеров для первого изображения
-            setBackgroundSize(previewWrapper, images[0]);
-        })
-        .catch(error => {
-            console.error('Ошибка загрузки изображений:', error);
-        });
+    // Используем <img> внутри слайда, адаптацию делаем через CSS object-fit
 
     // Создаем слайды для каждого элемента данных
     dataForCourses.forEach((item, index) => {
         const slide = document.createElement('div');
         slide.className = 'slide';
-        slide.style.backgroundImage = `url('${item.image}')`;
-        slide.style.backgroundSize = 'cover';
-        slide.style.backgroundPosition = 'center';
-        slide.style.backgroundRepeat = 'no-repeat';
         slide.style.position = 'absolute';
         slide.style.top = '0';
         slide.style.left = '0';
@@ -63,6 +40,16 @@ function initCoursesSlider() {
         slide.style.opacity = '0';
         slide.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
         slide.style.transform = 'translateX(100%)'; // Начальная позиция справа
+        slide.style.borderRadius = '16px';
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.location || 'Изображение слайда';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '16px';
+        img.style.display = 'block';
+        slide.appendChild(img);
         slidesContainer.appendChild(slide);
 
         // Создаем индикаторы
@@ -135,11 +122,6 @@ function initCoursesSlider() {
             currentSlide.style.opacity = '0';
             currentIndex = index;
         }, 500);
-        setBackgroundSize(previewWrapper, images[index]);
-    }
-    function setBackgroundSize(element, dimensions) {
-        element.style.width = `${dimensions.width}px`;
-        element.style.height = `${dimensions.height}px`;
     }
 }
 
@@ -180,19 +162,24 @@ function initGallerySlider() {
     dataForGallery.forEach((item, index) => {
         const slide = document.createElement('div');
         slide.className = 'gallery-slide';
-        slide.style.backgroundImage = `url('${item.image}')`;
-        slide.style.backgroundSize = 'contain';
-        slide.style.backgroundPosition = 'center';
-        slide.style.backgroundRepeat = 'no-repeat';
         slide.style.position = 'absolute';
         slide.style.top = '0';
         slide.style.left = '0';
         slide.style.width = '100%';
         slide.style.height = '100%';
-        slide.style.borderRadius = 'inherit';
         slide.style.opacity = '0';
         slide.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
         slide.style.transform = 'translateX(100%)'; // Начальная позиция справа
+        slide.style.borderRadius = '16px';
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.alt || 'Фото из галереи';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'contain';
+        img.style.borderRadius = 'inherit';
+        img.style.display = 'block';
+        slide.appendChild(img);
         slidesContainer.appendChild(slide);
 
         // Создаем индикаторы
